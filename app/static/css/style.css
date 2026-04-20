@@ -1,0 +1,56 @@
+
+
+/* app */
+#app-container {
+    position: static;
+    background-color: rgb(239, 244, 248);
+    max-width: 1200px;
+    margin: auto auto;
+}
+
+/* main-component */
+#main-container {
+    display: grid;
+    grid-template-columns: 12% 88%;
+}
+
+#header-container {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    border: 1px solid;
+    height: 50px
+}
+
+#sidebar-container {
+    grid-row: 2;
+    grid-column: 1;
+    border: 1px solid;
+    display: block;
+}
+
+#content-container {
+    display: block;
+    grid-row: 2;
+    grid-column: 2 / span 1;
+    border: 1px solid;
+    min-height: 625px;
+    padding-left: 10px;
+}
+
+/* header-component */
+#header-component {
+    background-color: floralwhite;
+    height: 100%
+}
+
+/* sidebar-component */
+#sidebar-component {
+    background-color: gainsboro;
+    height: 100%
+}
+
+/* content-component */
+#content-component {
+    background-color: whitesmoke;
+    height: 100%
+}

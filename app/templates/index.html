@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    hello, {{ user }}
+    <br>
+    <a href="{{ url_for('main_app') }}">App</a>
+    <br>
+    <a href="{{ url_for('api_doc') }}">API</a>
+    <br>
+    <a href="{{ url_for('api_records') }}">API/Records</a>
+</div>
+{% endblock %}
