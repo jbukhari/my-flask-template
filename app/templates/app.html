@@ -1,0 +1,124 @@
+{# This is a Jinja template #}
+
+{% extends 'base.html' %}
+{% block content %}
+<div id="app"></div>
+
+<script type="module">
+  // Import Vue and Pinia
+  import { createApp } from "./static/js/vue_3.5.29_esm-browser.js"
+  import { createPinia, defineStore, mapStores } from "./static/js/pinia_3.0.4_esm-browser.js"
+
+  /* Create Vue app using the Options API */
+  // https://vuejs.org/api/options-state.html
+  // The app has no attributes except for the template calling the main component.
+  const app = createApp({
+    template: /* html */ `
+      <div id="app-container">
+        <main-component />
+      </div>
+    `
+  })
+
+  // Change the global Vue template delimiters
+  app.config.compilerOptions.delimiters = ['[[', ']]']
+
+  /* Create Pinia state manager using option stores */
+  // https://pinia.vuejs.org/core-concepts/#Option-Stores
+  // Set component data fields to Pinia store objects for reactivity.
+  const pinia = createPinia()
+  const useMainStore = defineStore("mainStore", {
+    state: () => ({count: 1}), // the reactive data
+    getters: {double: (state) => state.count * 2},
+    actions: {inc() {this.count++}},
+  })
+  // Register the Pinia object with the Vue app
+  app.use(pinia)
+
+  /* Components */
+  /* main-component */
+  app.component(
+    "main-component",
+    {
+      template: /* html */ `
+        <div id="main-container">
+            <div <div id="header-container">
+              <header-component />
+            </div>
+            <div id="sidebar-container">
+              <sidebar-component "/>
+            </div>
+            <div id="content-container">
+              <content-component />
+            </div>
+        </div>
+      `
+    }
+  )
+
+  app.component(
+    "header-component",
+    {
+      template: /* html */ `
+        <div id="header-component">
+          HEADER
+        </div>
+      `
+    }
+  )
+
+  app.component(
+    "sidebar-component",
+    {
+      data: () => {
+        return {
+          mainStore: useMainStore()
+        }
+      },
+      template: /* html */ `
+        <div id=sidebar-component>
+          SIDEBAR<br>
+          count: [[ this.mainStore.count ]]
+        </div>
+      `
+    }
+  )
+
+  app.component(
+    "content-component",
+    {
+      props: [],
+      data: () => {
+        return {
+            range: Array(1),
+            mainStore: useMainStore()
+        }
+      },
+      created() {},
+      template: /* html */ `
+        <div id="content-component  ">    
+          <h3>main component</h3>
+          <p>hello {{ user }}</p>
+          <p>
+            <input type="button" value="add count" @click="this.mainStore.inc()"></input>
+            count: [[ this.mainStore.count ]]
+          </p>
+          <p>
+            <input type="button" value="add item" @click="this.range.push(1)"></input>
+          </p>
+          <ul>
+            <li v-for="i in range.keys()">
+              item [[ i+1 ]]
+            </li>
+          </ul>
+        </div>
+      `,
+      mounted() {},
+      updated() {}
+    }
+  )
+
+  app.mount("#app")
+</script>
+
+{% endblock %}
