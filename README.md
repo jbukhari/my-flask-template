@@ -12,4 +12,8 @@ The Vue app is JavaScript deployed directly to the frontend without a build step
 The Vue app is intended to be a [single-page application (SPA)](https://developer.mozilla.org/en-US/docs/Glossary/SPA). The app loads one "main" component, and all the other components that make up the app are expected to be children of the main component. This template provides three pre-built components for page header, sidebar, and content. Components can share reactive data using Pinia. A generic Pinia data store is pre-built into this template.
 
 ### database
-In order to enable the user system, the developer must supply an environment variable containing read/write credentials for a database that [Pymongo](https://pypi.org/project/pymongo/) can interface with such as [MongoDB](https://www.mongodb.com/docs/), [FerretDB](https://docs.ferretdb.io/),  [AWS DocumentDB](https://aws.amazon.com/documentdb/), or [Azure Cosmos DB](https://azure.microsoft.com/en-us/products/cosmos-db#tabs-pill-bar-oc15bd_tab3).
+In order to enable the authorization user system, the developer must supply an environment variable containing read/write credentials for a database that [Pymongo](https://pypi.org/project/pymongo/) can interface with such as [MongoDB](https://www.mongodb.com/docs/), [FerretDB](https://docs.ferretdb.io/),  [AWS DocumentDB](https://aws.amazon.com/documentdb/), or [Azure Cosmos DB](https://azure.microsoft.com/en-us/products/cosmos-db#tabs-pill-bar-oc15bd_tab3).
+
+---
+
+<img width="1351" height="766" alt="image" src="https://github.com/user-attachments/assets/aeb500a8-505d-4077-9b88-e64838b37481" />
